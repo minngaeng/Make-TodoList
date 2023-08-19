@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import * as S from './Signup.style';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isBtnValid, setIsBtnValid] = useState(false);
@@ -38,6 +41,7 @@ const Signup = () => {
       );
       console.log(response);
       if (response.status === 201) {
+        navigate('/signin');
         console.log('회원가입 성공!');
       }
     } catch (error) {
