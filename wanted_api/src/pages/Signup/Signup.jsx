@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as S from './Signup.style';
+import axios from 'axios';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -26,6 +27,29 @@ const Signup = () => {
     }
   };
 
+  const goToSignUp = async () => {
+    try {
+      const response = await axios.post(
+        ' https://www.pre-onboarding-selection-task.shop/auth/signup',
+        {
+          email,
+          password,
+        }
+      );
+      console.log(response);
+      if (response.status === 201) {
+        console.log('회원가입 성공!');
+      }
+    } catch (error) {
+      console.error(error.response.data.statusCode);
+      if (error.response.data.statusCode === 400) {
+        alert('동일한 이메일이 존재합니다. 다른 이메일을 입력해 주세요.');
+        setEmail('');
+        setIsBtnValid(false);
+      }
+    }
+  };
+
   return (
     <S.SignUp>
       <h2>회원가입하기</h2>
@@ -43,7 +67,9 @@ const Signup = () => {
         placeholder="비밀번호를 입력해 주세요."
       />
 
-      <S.Button disabled={!isBtnValid}>회원 가입 하기</S.Button>
+      <S.Button disabled={!isBtnValid} onClick={goToSignUp}>
+        회원 가입 하기
+      </S.Button>
     </S.SignUp>
   );
 };
