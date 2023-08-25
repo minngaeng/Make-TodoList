@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import * as S from './Signin.style';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signin = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -27,6 +30,7 @@ const Signin = () => {
       if (response.status === 200) {
         console.log('로그인 성공!');
         localStorage.setItem('access_token', response.data.access_token);
+        navigate('/todo');
       }
     } catch (error) {
       console.log(error);
