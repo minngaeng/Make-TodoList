@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 const Todo = () => {
   const [todoInput, setTodoInput] = useState('');
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([]); // 배열 목록
 
   const onChangeTodo = (event) => {
     setTodoInput(event.currentTarget.value);
@@ -28,6 +28,7 @@ const Todo = () => {
       // console.log(todos);
       // {todo: 'f', userId: 15527, id: 40618, isCompleted: false}
       //  []
+      setTodoInput('');
     } catch (error) {
       console.error(error);
     }
@@ -44,7 +45,7 @@ const Todo = () => {
             },
           }
         );
-        console.log('응답', response);
+        // console.log('응답', response);
         setTodos(response.data);
       };
       fetchTodos();
@@ -52,6 +53,30 @@ const Todo = () => {
       console.error(error);
     }
   }, []);
+
+  const onClickChecked = async (id, todo, currentIsCompleted) => {
+    try {
+      const response = await axios.put(
+        `https://www.pre-onboarding-selection-task.shop/todos/${id}`,
+        {
+          todo: todo,
+          isCompleted: !currentIsCompleted,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      console.log('이게 진짜 궁굼', response.data);
+      setTodos(
+        todos.map((todoItem) => (todoItem.id === id ? response.data : todoItem))
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
@@ -64,17 +89,15 @@ const Todo = () => {
       <button onClick={addTodo}>추가</button>
       <ul>
         {todos.map((el) => (
-          <li key={el.id}>{el.todo}</li>
+          <li key={el.id}>
+            <input
+              checked={el.isCompleted}
+              onChange={() => onClickChecked(el.id, el.todo, el.isCompleted)}
+              type="checkbox"
+            />
+            <span>{el.todo}</span>
+          </li>
         ))}
-        {/* {todos.map((todo) => (
-          <li key={todo.id}>{todo.todo}</li>
-        ))} */}
-        <li>
-          <label>
-            <input type="checkbox" />
-            <span>TODO 1</span>
-          </label>
-        </li>
       </ul>
     </div>
   );
