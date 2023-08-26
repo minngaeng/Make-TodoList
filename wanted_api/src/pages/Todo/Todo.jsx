@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 
 const Todo = () => {
   const [todoInput, setTodoInput] = useState('');
-  const [todos, setTodos] = useState([]); // 배열 목록
+  const [todos, setTodos] = useState([]);
 
-  const onChangeTodoInput = (event) => {
+  const onChangeTodo = (event) => {
     setTodoInput(event.currentTarget.value);
   };
 
@@ -23,17 +23,19 @@ const Todo = () => {
           },
         }
       );
-      console.log(response);
+      console.log(response.data);
       setTodos([...todos, response.data]);
-      setTodoInput('');
+      // console.log(todos);
+      // {todo: 'f', userId: 15527, id: 40618, isCompleted: false}
+      //  []
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    const fetchTodos = async () => {
-      try {
+    try {
+      const fetchTodos = async () => {
         const response = await axios.get(
           'https://www.pre-onboarding-selection-task.shop/todos',
           {
@@ -42,38 +44,35 @@ const Todo = () => {
             },
           }
         );
-        console.log(response);
+        console.log('응답', response);
         setTodos(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchTodos();
+      };
+      fetchTodos();
+    } catch (error) {
+      console.error(error);
+    }
   }, []);
 
   return (
     <div>
       <input
         value={todoInput}
-        onChange={onChangeTodoInput}
+        onChange={onChangeTodo}
         type="text"
         placeholder="TODO 내용 입력"
       />
       <button onClick={addTodo}>추가</button>
       <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.todo}</li>
+        {todos.map((el) => (
+          <li key={el.id}>{el.todo}</li>
         ))}
+        {/* {todos.map((todo) => (
+          <li key={todo.id}>{todo.todo}</li>
+        ))} */}
         <li>
           <label>
             <input type="checkbox" />
             <span>TODO 1</span>
-          </label>
-        </li>
-        <li>
-          <label>
-            <input type="checkbox" />
-            <span>TODO 2</span>
           </label>
         </li>
       </ul>
