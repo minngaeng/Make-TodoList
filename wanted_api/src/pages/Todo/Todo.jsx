@@ -6,14 +6,43 @@ const Todo = () => {
   const [todos, setTodos] = useState([]); // 배열 목록
 
   const [editTodoInput, setEditTodoInput] = useState('');
-  const [editingId, setEditingId] = useState(null);
+  const [editId, setEditId] = useState(null); // 뭘 수정할지
+
+  const onClickSubmit = async (id, currentIsCompleted) => {
+    try {
+      const response = await axios.put(
+        `https://www.pre-onboarding-selection-task.shop/todos/${id}`,
+        {
+          todo: editTodoInput,
+          isCompleted: currentIsCompleted,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      console.log(response.data);
+      setTodos(todos.map((el) => (el.id === id ? response.data : el)));
+      setEditId('');
+      setEditTodoInput('');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const onClickCancel = () => {
+    setEditId();
+    setEditTodoInput('');
+  };
 
   const onChangeEditTodo = (event) => {
     setEditTodoInput(event.currentTarget.value);
   };
 
-  const onClickEditing = (id, todo) => {
-    setEditingId(id);
+  const onClickEdit = (id, todo) => {
+    setEditId(id);
     setEditTodoInput(todo);
   };
 
@@ -125,20 +154,40 @@ const Todo = () => {
               onChange={() => onClickChecked(el.id, el.todo, el.isCompleted)}
               type="checkbox"
             />
-            <span>{el.todo}</span>
-            <button onClick={() => onClickDelete(el.id)}>삭제</button>
+            {editId === el.id ? (
+              <>
+                <input
+                  onChange={onChangeEditTodo}
+                  value={editTodoInput}
+                  type="text"
+                />
+                <button onClick={() => onClickSubmit(el.id, el.isCompleted)}>
+                  제출
+                </button>
+                <button onClick={onClickCancel}>취소</button>
+              </>
+            ) : (
+              <>
+                <span>{el.todo}</span>
+                <button onClick={() => onClickEdit(el.id, el.todo)}>
+                  수정
+                </button>
+                <button onClick={() => onClickDelete(el.id)}>삭제</button>
+              </>
+            )}
           </li>
         ))}
-        <li>
-          <input type="checkbox" />
+
+        {/* <li> */}
+        {/* <input type="checkbox" />
           <input
             value={editTodoInput}
             onChange={onChangeEditTodo}
             type="text"
-          />
-          <button onClick={() => onClickEditing(el.id, el.todo)}>제출</button>
-          <button>취소</button>
-        </li>
+          /> */}
+        {/* <button onClick={() => onClickEditing(el.id, el.todo)}>제출</button> */}
+        {/* <button>취소</button> */}
+        {/* </li> */}
       </ul>
     </div>
   );
