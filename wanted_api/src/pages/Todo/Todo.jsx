@@ -78,6 +78,24 @@ const Todo = () => {
     }
   };
 
+  const onClickDelete = async (id) => {
+    try {
+      const response = await axios.delete(
+        `https://www.pre-onboarding-selection-task.shop/todos/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          },
+        }
+      );
+      console.log(response);
+      const updatedItem = todos.filter((todoItem) => todoItem.id !== id);
+      setTodos(updatedItem);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <input
@@ -96,6 +114,7 @@ const Todo = () => {
               type="checkbox"
             />
             <span>{el.todo}</span>
+            <button onClick={() => onClickDelete(el.id)}>삭제</button>
           </li>
         ))}
       </ul>
