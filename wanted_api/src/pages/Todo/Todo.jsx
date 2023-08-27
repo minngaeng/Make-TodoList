@@ -5,6 +5,18 @@ const Todo = () => {
   const [todoInput, setTodoInput] = useState('');
   const [todos, setTodos] = useState([]); // 배열 목록
 
+  const [editTodoInput, setEditTodoInput] = useState('');
+  const [editingId, setEditingId] = useState(null);
+
+  const onChangeEditTodo = (event) => {
+    setEditTodoInput(event.currentTarget.value);
+  };
+
+  const onClickEditing = (id, todo) => {
+    setEditingId(id);
+    setEditTodoInput(todo);
+  };
+
   const onChangeTodo = (event) => {
     setTodoInput(event.currentTarget.value);
   };
@@ -117,6 +129,16 @@ const Todo = () => {
             <button onClick={() => onClickDelete(el.id)}>삭제</button>
           </li>
         ))}
+        <li>
+          <input type="checkbox" />
+          <input
+            value={editTodoInput}
+            onChange={onChangeEditTodo}
+            type="text"
+          />
+          <button onClick={() => onClickEditing(el.id, el.todo)}>제출</button>
+          <button>취소</button>
+        </li>
       </ul>
     </div>
   );
