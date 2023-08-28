@@ -5,47 +5,49 @@ const Todo = () => {
   const [todoInput, setTodoInput] = useState('');
   const [todos, setTodos] = useState([]); // 배열 목록
 
-  const [editTodoInput, setEditTodoInput] = useState('');
-  const [editId, setEditId] = useState(null); // 뭘 수정할지
+  const [editTodoInput, setEditTodoInput] = useState(''); // 수정 input text 담을 state
+  const [editing, setEditing] = useState(null); // 수정 중인 input ID
 
-  const onClickSubmit = async (id, currentIsCompleted) => {
+  // 수정 input 에 들어갈 text onChange
+  const onChangeEditInput = (event) => {
+    setEditTodoInput(event.currentTarget.value);
+  };
+
+  // 수정 버튼 눌렀을 때 => 어떤 input 인지 알아야함
+  const onClickEdit = (id, todo) => {
+    setEditing(id);
+    setEditTodoInput(todo);
+  };
+
+  //  취소 버튼 눌렀을 때
+  const onClickCancel = () => {
+    setEditing();
+  };
+
+  // 제출 버튼 눌렀을 때
+  const onClickSubmit = async (id, editTodo, currentChecked) => {
     try {
       const response = await axios.put(
         `https://www.pre-onboarding-selection-task.shop/todos/${id}`,
         {
-          todo: editTodoInput,
-          isCompleted: currentIsCompleted,
+          todo: editTodo,
+          isCompleted: currentChecked,
         },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-            'Content-Type': 'application/json',
+            'Content-type': 'application/json',
           },
         }
       );
-      console.log(response.data);
+      console.log(response);
       setTodos(todos.map((el) => (el.id === id ? response.data : el)));
-      setEditId('');
-      setEditTodoInput('');
+      setEditing();
     } catch (error) {
       console.error(error);
     }
   };
-
-  const onClickCancel = () => {
-    setEditId();
-    setEditTodoInput('');
-  };
-
-  const onChangeEditTodo = (event) => {
-    setEditTodoInput(event.currentTarget.value);
-  };
-
-  const onClickEdit = (id, todo) => {
-    setEditId(id);
-    setEditTodoInput(todo);
-  };
-
+  // ---------------------------------------------
   const onChangeTodo = (event) => {
     setTodoInput(event.currentTarget.value);
   };
@@ -154,14 +156,19 @@ const Todo = () => {
               onChange={() => onClickChecked(el.id, el.todo, el.isCompleted)}
               type="checkbox"
             />
-            {editId === el.id ? (
+            {editing === el.id ? (
               <>
                 <input
-                  onChange={onChangeEditTodo}
+                  onChange={onChangeEditInput}
                   value={editTodoInput}
                   type="text"
                 />
-                <button onClick={() => onClickSubmit(el.id, el.isCompleted)}>
+
+                <button
+                  onClick={() =>
+                    onClickSubmit(el.id, editTodoInput, el.isCompleted)
+                  }
+                >
                   제출
                 </button>
                 <button onClick={onClickCancel}>취소</button>
