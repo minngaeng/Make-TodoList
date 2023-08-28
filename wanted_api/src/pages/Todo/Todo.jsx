@@ -184,17 +184,6 @@ const Todo = () => {
             )}
           </li>
         ))}
-
-        {/* <li> */}
-        {/* <input type="checkbox" />
-          <input
-            value={editTodoInput}
-            onChange={onChangeEditTodo}
-            type="text"
-          /> */}
-        {/* <button onClick={() => onClickEditing(el.id, el.todo)}>제출</button> */}
-        {/* <button>취소</button> */}
-        {/* </li> */}
       </ul>
     </div>
   );
