@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# wanted 프리온보딩 과제 api 를 이용한 todoList 실습
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 주요 기능 구현 소요 기간
 
-## Available Scripts
+> **2023.08.21 ~ 2023.08.25**
 
-In the project directory, you can run:
+## 기능 소개
+- 회원가입
+- 로그인
+- TODO LIST
+  - 추가/삭제/수정 기능
+- 리다이렉트 처리
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 시작 가이드
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Installation
 
-### `npm test`
+```bash
+$ git clone 
+$ npm install
+$ npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 주요 기능 📦
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🏘️ 소셜 로그인 (카카오톡)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![카카오톡 로그인](https://github.com/Woori-Dongne/frontend-react/assets/78401083/f7f281e8-9e54-4137-91bf-a07208895195)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 소셜 로그인 (카카오톡)을 이용해 사용자의 접근성과 편리함을 높임
+- 처음 가입하는 유저에게는 추가 정보 (닉네임, 상세 주소, 핸드폰 번호)를 입력하도록 설정
+- 기존 유저에게는 추가 정보를 기입하는 프로세스를 제거
 
-### `npm run eject`
+### 🏘️ 게시글 작성 기능
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![글 작성 페이지](https://github.com/Woori-Dongne/frontend-react/assets/78401083/fc3e7d4a-aed4-4a1e-b46a-3236aec4120a)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 타이틀, 카테고리, 지역, 인원, 날짜 데이터를 통한 게시글 작성 및 채팅방 개설
+- S3를 통한 이미지 업로드 기능
+- 게시글 수정시 게시글의 id만으로 해당 글에 대한 데이터가 보여질 수 있도록 구현
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 🏘️ 채팅 기능
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![채팅방](https://github.com/Woori-Dongne/frontend-react/assets/78401083/a01af4ad-704c-409c-a5c2-219179543477)
 
-## Learn More
+- WebSocket 통신 방식을 이용한 유저간의 채팅 기능
+- 나를 제외한 다른 유저를 친구로 등록하거나 신고하는 기능
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 디렉토리 구조
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+📦wanted_api
+ ┣ 📂public
+ ┃ ┣ 📂data
+ ┃ ┣ 📂images
+ ┃ ┗ 📜index.html
+ ┣ 📂src
+ ┃ ┣ 📂assets
+ ┃ ┣ 📂components
+ ┃ ┃ ┗ 📂AuthGuard : 로그인 여부에 따른 리다이렉트 처리 진행하는 폴어
+ ┃ ┃ ┃ ┗ 📜AuthGuard.jsx
+ ┃ ┣ 📂pages
+ ┃ ┃ ┣ 📂Signin
+ ┃ ┃ ┣ 📂Signup
+ ┃ ┃ ┗ 📂Todo
+ ┃ ┣ 📂styles
+ ┃ ┣ 📜Router.js
+ ┃ ┣ 📜index.css
+ ┃ ┗ 📜index.js
+ ┣ 📜.gitignore
+ ┣ 📜README.md
+ ┣ 📜package-lock.json
+ ┗ 📜package.json
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
