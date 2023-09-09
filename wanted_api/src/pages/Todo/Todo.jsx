@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import * as S from './Todo.style';
 
 const Todo = () => {
   const [todoInput, setTodoInput] = useState('');
@@ -140,52 +141,55 @@ const Todo = () => {
   };
 
   return (
-    <div>
-      <input
-        value={todoInput}
-        onChange={onChangeTodo}
-        type="text"
-        placeholder="TODO 내용 입력"
-      />
-      <button onClick={addTodo}>추가</button>
-      <ul>
-        {todos.map((el) => (
-          <li key={el.id}>
-            <input
-              checked={el.isCompleted}
-              onChange={() => onClickChecked(el.id, el.todo, el.isCompleted)}
-              type="checkbox"
-            />
-            {editing === el.id ? (
-              <>
-                <input
-                  onChange={onChangeEditInput}
-                  value={editTodoInput}
-                  type="text"
-                />
+    <S.Todo>
+      <S.InputWrapper>
+        <S.InputFoam
+          value={todoInput}
+          onChange={onChangeTodo}
+          type="text"
+          placeholder="TODO 내용 입력"
+        />
+        <S.SubmitButton onClick={addTodo}>추가</S.SubmitButton>
+      </S.InputWrapper>
 
-                <button
-                  onClick={() =>
-                    onClickSubmit(el.id, editTodoInput, el.isCompleted)
-                  }
-                >
-                  제출
-                </button>
-                <button onClick={onClickCancel}>취소</button>
-              </>
-            ) : (
-              <>
-                <span>{el.todo}</span>
-                <button onClick={() => onClickEdit(el.id, el.todo)}>
-                  수정
-                </button>
-                <button onClick={() => onClickDelete(el.id)}>삭제</button>
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
+      {todos.map((el) => (
+        <S.TodoListBox key={el.id}>
+          <S.CheckBox
+            checked={el.isCompleted}
+            onChange={() => onClickChecked(el.id, el.todo, el.isCompleted)}
+            type="checkbox"
+          />
+          {editing === el.id ? (
+            <>
+              <S.InputFoam
+                onChange={onChangeEditInput}
+                value={editTodoInput}
+                type="text"
+              />
+
+              <S.SubmitButton
+                onClick={() =>
+                  onClickSubmit(el.id, editTodoInput, el.isCompleted)
+                }
+              >
+                제출
+              </S.SubmitButton>
+              <S.CancelButton onClick={onClickCancel}>취소</S.CancelButton>
+            </>
+          ) : (
+            <S.TodoListWrapper>
+              <S.MyTodo>{el.todo}</S.MyTodo>
+              <S.EditButton onClick={() => onClickEdit(el.id, el.todo)}>
+                수정
+              </S.EditButton>
+              <S.DeleteButton onClick={() => onClickDelete(el.id)}>
+                삭제
+              </S.DeleteButton>
+            </S.TodoListWrapper>
+          )}
+        </S.TodoListBox>
+      ))}
+    </S.Todo>
   );
 };
 

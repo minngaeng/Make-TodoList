@@ -18,6 +18,7 @@ export const Input = styled.input`
 export const Button = styled.button`
   width: 51%;
   height: 2rem;
+
   opacity: ${(props) => (props.disabled ? 0.6 : 1)};
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 `;
