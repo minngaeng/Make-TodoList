@@ -44,7 +44,8 @@ $ npm start
 ### 📝 Todo List
 
 <img width="400" alt="스크린샷 2023-09-10 오후 12 06 59" src="https://github.com/minngaeng/wanted_api/assets/124495210/8d5d47d3-5835-4a3e-b281-c53af8dd4dc8">
-- 할 일 CRUD
+
+- CRUD
 
 ### 🔒 리다이렉트 처리 - AuthGuard
 
