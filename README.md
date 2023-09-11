@@ -52,7 +52,7 @@ $ npm start
 - 토큰 검증 : 사용자의 인증 상태를 확인
 - 로그인/회원가입/할일 목록 페이지 리다이렉션
 
-### 구현 과정에서의 배운 점 벨로그 보러가기 
+### 🧠 구현 과정에서의 배운 점 벨로그 보러가기 
 
 [할 일 수정하기 구현 과정 보러가기](https://velog.io/@minngaeng/%EC%B5%9C%EC%A2%85-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0) <br />
 [state 렌더링에 따른 UI 변화 고민 과정 보러가기](https://velog.io/@minngaeng/%EC%9E%84%EC%8B%9C%EC%A0%80%EC%9E%A5) <br />
