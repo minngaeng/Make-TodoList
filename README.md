@@ -53,13 +53,13 @@ $ npm start
 
 ### 구현 과정에서의 배운 점 벨로그 보러가기 
 
-[할 일 수정하기 구현 과정 보러가기](https://velog.io/@minngaeng/%EC%B5%9C%EC%A2%85-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0)
-[state 렌더링에 따른 UI 변화 고민 과정 보러가기](https://velog.io/@minngaeng/%EC%9E%84%EC%8B%9C%EC%A0%80%EC%9E%A5)
-[목록을 재 렌더링 하는 과정에서 map vs filter 선택 하는 고민 과정 보러가기](https://velog.io/@minngaeng/Delete-map-VS-filter-...-which-method-is-the-right)
-['비동기 상태에 대해 조금 알게 되다!' 보러가기](https://velog.io/@minngaeng/%EC%95%84%EB%86%94-%EA%B8%80%EB%A9%B4-%EC%99%9C-setState%EC%97%90-%ED%95%A8%EA%BB%98-%EB%8B%B4%EC%95%84-Body-%EC%97%90-%EC%A0%84%EC%86%A1%ED%95%98%EB%A9%B4-%EC%95%88%EB%90%98%EB%8A%94%EB%8D%B0)
-[새로운 TODO 추가할 때 컴포넌트 렌더링의 과정 이해하는 벨로그 보러가기 ](https://velog.io/@minngaeng/%EC%8A%A4%ED%94%84%EB%A0%88%EB%93%9C-%EC%97%B0%EC%82%B0%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B6%81%EA%B5%BC%ED%95%A8%EC%9D%84-%ED%92%80%EB%8B%A4)
-[스프레드 연산자로 기존의 목록과 새로운 목록을 합치는 과정 벨로그 보러가기](https://velog.io/@minngaeng/%EC%8A%A4%ED%94%84%EB%A0%88%EB%93%9C-%EC%97%B0%EC%82%B0%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B6%81%EA%B5%BC%ED%95%A8%EC%9D%84-%ED%92%80%EB%8B%A4)
-['리다이렉트 처리에 대해 배웠다!' 벨로그 보러라기](https://velog.io/@minngaeng/%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%ED%8A%B8-%EC%B2%98%EB%A6%AC-%EA%B7%B8%EA%B2%8C-%EB%AD%94%EB%8D%B0)
+[할 일 수정하기 구현 과정 보러가기](https://velog.io/@minngaeng/%EC%B5%9C%EC%A2%85-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0) <br />
+[state 렌더링에 따른 UI 변화 고민 과정 보러가기](https://velog.io/@minngaeng/%EC%9E%84%EC%8B%9C%EC%A0%80%EC%9E%A5) <br />
+[목록을 재 렌더링 하는 과정에서 map vs filter 선택 하는 고민 과정 보러가기](https://velog.io/@minngaeng/Delete-map-VS-filter-...-which-method-is-the-right) <br />
+['비동기 상태에 대해 조금 알게 되다!' 보러가기](https://velog.io/@minngaeng/%EC%95%84%EB%86%94-%EA%B8%80%EB%A9%B4-%EC%99%9C-setState%EC%97%90-%ED%95%A8%EA%BB%98-%EB%8B%B4%EC%95%84-Body-%EC%97%90-%EC%A0%84%EC%86%A1%ED%95%98%EB%A9%B4-%EC%95%88%EB%90%98%EB%8A%94%EB%8D%B0) <br />
+[새로운 TODO 추가할 때 컴포넌트 렌더링의 과정 이해하는 벨로그 보러가기 ](https://velog.io/@minngaeng/%EC%8A%A4%ED%94%84%EB%A0%88%EB%93%9C-%EC%97%B0%EC%82%B0%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B6%81%EA%B5%BC%ED%95%A8%EC%9D%84-%ED%92%80%EB%8B%A4) <br />
+[스프레드 연산자로 기존의 목록과 새로운 목록을 합치는 과정 벨로그 보러가기](https://velog.io/@minngaeng/%EC%8A%A4%ED%94%84%EB%A0%88%EB%93%9C-%EC%97%B0%EC%82%B0%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B6%81%EA%B5%BC%ED%95%A8%EC%9D%84-%ED%92%80%EB%8B%A4) <br />
+['리다이렉트 처리에 대해 배웠다!' 벨로그 보러라기](https://velog.io/@minngaeng/%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%ED%8A%B8-%EC%B2%98%EB%A6%AC-%EA%B7%B8%EA%B2%8C-%EB%AD%94%EB%8D%B0) <br />
 
 ### 디렉토리 구조
 
