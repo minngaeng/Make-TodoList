@@ -60,6 +60,7 @@ export const TodoListWrapper = styled.div`
 export const MyTodo = styled.span`
   padding: 0 2rem;
   font-size: 1.4rem;
+  text-decoration: ${(props) => (props.underline ? 'line-through' : 'none')};
 `;
 
 export const EditButton = styled.button`

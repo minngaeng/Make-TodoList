@@ -178,7 +178,7 @@ const Todo = () => {
             </>
           ) : (
             <S.TodoListWrapper>
-              <S.MyTodo>{el.todo}</S.MyTodo>
+              <S.MyTodo underline={el.isCompleted}>{el.todo}</S.MyTodo>
               <S.EditButton onClick={() => onClickEdit(el.id, el.todo)}>
                 수정
               </S.EditButton>

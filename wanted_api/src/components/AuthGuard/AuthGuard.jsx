@@ -15,6 +15,8 @@ const AuthGuard = ({ children }) => {
       navigate('/todo');
     } else if (!token && window.location.pathname === '/todo') {
       navigate('/signin');
+    } else if (!token) {
+      navigate('/signup');
     }
   }, []);
   return children;
